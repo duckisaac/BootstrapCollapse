@@ -4,11 +4,13 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="bootstrap-collapse : Easy way to make use of bootstrap collapse component">
+    <meta name="description" content="Bootstrap Collapse : Easy way to make use of bootstrap collapse component">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>bootstrap-collapse</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="javascripts/bootstrap-collapse.js"></script>
+    <title>Bootstrap Collapse</title>
   </head>
 
   <body>
@@ -31,62 +33,131 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a id="bootstrapcollapse" class="anchor" href="#bootstrapcollapse" aria-hidden="true"><span class="octicon octicon-link"></span></a>BootstrapCollapse</h1>
-
-<p>Easy way to make use of bootstrap collapse component</p>
-
-<h1>
-<a id="get-started" class="anchor" href="#get-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Started</h1>
-
-<p>$('#collapse').collapse(panel);</p>
-
-<h1>
-<a id="use-a-style" class="anchor" href="#use-a-style" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use a style</h1>
-
-<p>$('#collapse').collapse(panel, {style: Collapse.STYLE_DEFAULT});</p>
-
-<p>There are 6 styles you can apply to a collapse</p>
-
-<p>Collapse.STYLE_DEFAULT = 'panel-default';
-Collapse.STYLE_INFO = 'panel-info';
-Collapse.STYLE_PRIMARY = 'panel-primary';
-Collapse.STYLE_SUCCESS = 'panel-success';
-Collapse.STYLE_WARNING = 'panel-warning';
-Collapse.STYLE_DANGER = 'panel-danger';</p>
-
-<h1>
-<a id="other-options" class="anchor" href="#other-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Options</h1>
-
-<h2>
-<a id="collapse" class="anchor" href="#collapse" aria-hidden="true"><span class="octicon octicon-link"></span></a>collapse</h2>
-
-<p>default to true - expand the panel by default</p>
-
-<h1>
-<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h1>
-
-<p>All the events are executed in the Collapse context so you will be able to access all properties of a collapse</p>
-
-<h2>
-<a id="beforeshow" class="anchor" href="#beforeshow" aria-hidden="true"><span class="octicon octicon-link"></span></a>beforeShow</h2>
-
-<p>Invoked before panel body is expanded</p>
-
-<h2>
-<a id="postshow" class="anchor" href="#postshow" aria-hidden="true"><span class="octicon octicon-link"></span></a>postShow</h2>
-
-<p>Invoked after panel body is expanded</p>
-
-<h2>
-<a id="beforehide" class="anchor" href="#beforehide" aria-hidden="true"><span class="octicon octicon-link"></span></a>beforeHide</h2>
-
-<p>Invoked before folding the panel</p>
-
-<h2>
-<a id="posthide" class="anchor" href="#posthide" aria-hidden="true"><span class="octicon octicon-link"></span></a>postHide</h2>
-
-<p>Invoked after folding the panel</p>
+        <div class="container">
+            <header>
+                <h2>Bootstrap Collapse <small>an easy way to use BS's collapse component</small></h2>
+            </header>
+            <div style="margin-bottom: 20px">
+                <p>Supposing the following examples all use this panel object for the first parameter.</p>
+                <pre>
+var panel = {
+    title: 'Collapse Title',
+    body: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+};
+                    </pre>
+            </div>
+            <section>
+                <header>
+                    <blockquote>The Easiest & Simplest Call</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel);</pre>
+                </div>
+                <div id="collapse-1"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Use a Style</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {style: Collapse.STYLE_DEFAULT});</pre>
+                </div>
+                <div id="collapse-6"></div>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {style: Collapse.STYLE_PRIMARY});</pre>
+                </div>
+                <div id="collapse-2"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Hide Body By Default</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {collapse: false, style: Collapse.STYLE_INFO});</pre>
+                </div>
+                <div id="collapse-3"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Using Method</blockquote>
+                </header>
+                <div>
+                    <pre>
+$('#collapse').collapse(panel, {style: Collapse.STYLE_WARNING});     
+          
+window.setTimeout(function(){
+    $('#collapse').collapse('toggle');
+}, 2000);
+                    </pre>
+                </div>
+                <div id="collapse-4"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Event Handlers</blockquote>
+                </header>
+                <div>
+                    <pre>
+$('#collapse').collapse(panel, {
+    style: Collapse.STYLE_SUCCESS, 
+    beforeShow: function(){
+        alert('Header is ' + this.title.text());
+    },
+    beforeHide: function(){
+        alert('I am closing this panel!');
+    },
+    postShow: function(){
+        alert('Hello everybody! Have you got your banana yet?');
+    },
+    postHide: function(){
+        alert('Oops...Bye bye banana!');
+    }
+});                       
+                    </pre>
+                </div>
+                <div id="collapse-5"></div>
+            </section>           
+            
+        </div>
+        
+        <script>
+            $(function(){
+                var panel = {
+                    title: 'Collapse Title',
+                    body: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+                };
+                $('#collapse-1').collapse(panel);
+                $('#collapse-2').collapse(panel, {style: Collapse.STYLE_PRIMARY});
+                $('#collapse-3').collapse(panel, {collapse: false, style: Collapse.STYLE_INFO});
+                $('#collapse-4').collapse(panel, {style: Collapse.STYLE_WARNING});               
+                window.setTimeout(function(){
+                    $('#collapse-4').collapse('toggle');
+                }, 2000);
+                
+                $('#collapse-5').collapse(panel, {
+                    style: Collapse.STYLE_SUCCESS, 
+                    beforeShow: function(){
+                        alert('Header is ' + this.title.text());
+                    },
+                    beforeHide: function(){
+                        alert('I am closing this panel!');
+                    },
+                    postShow: function(){
+                        alert('Hello everybody! Have you got your banana yet?');
+                    },
+                    postHide: function(){
+                        alert('Oops...Bye bye banana!');
+                    }
+                });
+                
+                $('#collapse-6').collapse(panel, {style: Collapse.STYLE_DEFAULT});
+            });
+            
+        </script>
       </section>
     </div>
 
