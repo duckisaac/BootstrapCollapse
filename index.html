@@ -1,1 +1,175 @@
-Hello World!
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Bootstrap Collapse : Easy way to make use of bootstrap collapse component">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="javascripts/bootstrap-collapse.js"></script>
+    <title>Bootstrap Collapse</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/duckisaac/BootstrapCollapse">View on GitHub</a>
+
+          <h1 id="project_title">bootstrap-collapse</h1>
+          <h2 id="project_tagline">Easy way to make use of bootstrap collapse component</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/duckisaac/BootstrapCollapse/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/duckisaac/BootstrapCollapse/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <div class="container">
+            <header>
+                <h2>Bootstrap Collapse <small>an easy way to use BS's collapse component</small></h2>
+            </header>
+            <div style="margin-bottom: 20px">
+                <p>Supposing the following examples all use this panel object for the first parameter.</p>
+                <pre>
+var panel = {
+    title: 'Collapse Title',
+    body: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+};
+                    </pre>
+            </div>
+            <section>
+                <header>
+                    <blockquote>The Easiest & Simplest Call</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel);</pre>
+                </div>
+                <div id="collapse-1"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Use a Style</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {style: Collapse.STYLE_DEFAULT});</pre>
+                </div>
+                <div id="collapse-6"></div>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {style: Collapse.STYLE_PRIMARY});</pre>
+                </div>
+                <div id="collapse-2"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Hide Body By Default</blockquote>
+                </header>
+                <div>
+                    <pre>$('#collapse').collapse(panel, {collapse: false, style: Collapse.STYLE_INFO});</pre>
+                </div>
+                <div id="collapse-3"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Using Method</blockquote>
+                </header>
+                <div>
+                    <pre>
+$('#collapse').collapse(panel, {style: Collapse.STYLE_WARNING});     
+          
+window.setTimeout(function(){
+    $('#collapse').collapse('toggle');
+}, 2000);
+                    </pre>
+                </div>
+                <div id="collapse-4"></div>
+            </section>
+            
+            <section>
+                <header>
+                    <blockquote>Event Handlers</blockquote>
+                </header>
+                <div>
+                    <pre>
+$('#collapse').collapse(panel, {
+    style: Collapse.STYLE_SUCCESS, 
+    beforeShow: function(){
+        alert('Header is ' + this.title.text());
+    },
+    beforeHide: function(){
+        alert('I am closing this panel!');
+    },
+    postShow: function(){
+        alert('Hello everybody! Have you got your banana yet?');
+    },
+    postHide: function(){
+        alert('Oops...Bye bye banana!');
+    }
+});                       
+                    </pre>
+                </div>
+                <div id="collapse-5"></div>
+            </section>           
+            
+        </div>
+        
+        <script>
+            $(function(){
+                var panel = {
+                    title: 'Collapse Title',
+                    body: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+                };
+                $('#collapse-1').collapse(panel);
+                $('#collapse-2').collapse(panel, {style: Collapse.STYLE_PRIMARY});
+                $('#collapse-3').collapse(panel, {collapse: false, style: Collapse.STYLE_INFO});
+                $('#collapse-4').collapse(panel, {style: Collapse.STYLE_WARNING});               
+                window.setTimeout(function(){
+                    $('#collapse-4').collapse('toggle');
+                }, 2000);
+                
+                $('#collapse-5').collapse(panel, {
+                    style: Collapse.STYLE_SUCCESS, 
+                    beforeShow: function(){
+                        alert('Header is ' + this.title.text());
+                    },
+                    beforeHide: function(){
+                        alert('I am closing this panel!');
+                    },
+                    postShow: function(){
+                        alert('Hello everybody! Have you got your banana yet?');
+                    },
+                    postHide: function(){
+                        alert('Oops...Bye bye banana!');
+                    }
+                });
+                
+                $('#collapse-6').collapse(panel, {style: Collapse.STYLE_DEFAULT});
+            });
+            
+        </script>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">bootstrap-collapse maintained by <a href="https://github.com/duckisaac">duckisaac</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
