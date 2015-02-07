@@ -1,5 +1,6 @@
 # BootstrapCollapse
 Easy way to make use of bootstrap collapse component
+Demo: http://duckisaac.github.io/BootstrapCollapse/
 
 # Get Started
 $('#collapse').collapse(panel);
